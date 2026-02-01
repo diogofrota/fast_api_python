@@ -1,8 +1,14 @@
+
 from fastapi import FastAPI
+from http import HTTPStatus
+# from fastapi.responses import HTMLResponse
+
+from fastapi_zero.schemas import Message
 
 app = FastAPI()
 
 
-@app.get('/')
+@app.get('/', 
+         status_code=HTTPStatus.OK, response_model=Message)
 def read_root():
-    return {'message': 'olá mundo'}
+    return { 'message': 'Olá Mundo'}
